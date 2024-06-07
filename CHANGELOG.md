@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/FendriFiras/test-ci/compare/v1.0.1...v1.0.2) (2024-06-07)
+
+
+### Bug Fixes
+
+* add outputs ([7eac613](https://github.com/FendriFiras/test-ci/commit/7eac6135dff07711c126f6510642421878436dbc))
+
 ## [1.0.1](https://github.com/FendriFiras/test-ci/compare/v1.0.0...v1.0.1) (2024-06-07)
 
 
