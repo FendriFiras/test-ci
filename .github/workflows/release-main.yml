@@ -11,28 +11,22 @@ jobs:
     environment:
       name: Semver #your environment name
     outputs:
-      new_tag: ${{ steps.get_version.outputs.new_tag }}
+      new_tag_version: ${{ steps.tag_version.outputs.new_tag_version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - run: |
+          npm install
+
+      - name: Dry run to get the next release version
+        id: tag_version
+        run: |
+          export NEXT_TAG_VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
+          echo "new_tag_version=${NEXT_TAG_VERSION}" >> $GITHUB_OUTPUT
+          echo ${NEXT_TAG_VERSION}
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      - name: Get new tag
-        id: get_version
-        run: echo "new_tag=$(jq -r .new_release.version <semantic-release-result.json)" >> $GITHUB_ENV
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-  tag_export:
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
-
-      - name: Export new tag
-        run: echo ${{ needs.release.outputs.new_tag }}
