@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/FendriFiras/test-ci/compare/v1.1.0...v1.2.0) (2024-06-07)
+
+
+### Bug Fixes
+
+* typo ([3375fa2](https://github.com/FendriFiras/test-ci/commit/3375fa21aaab4803358adc4fd98fa62d6e316cff))
+
+
+### Features
+
+* id ([d728627](https://github.com/FendriFiras/test-ci/commit/d728627843e4f85469ebef25d7721cf8bf397ef0))
+
 # [1.1.0](https://github.com/FendriFiras/test-ci/compare/v1.0.2...v1.1.0) (2024-06-07)
 
 
