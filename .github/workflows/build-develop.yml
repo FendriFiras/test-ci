@@ -3,7 +3,7 @@ name: Build Docker Image on Develop
 on:
   push:
     branches:
-      - develop
+      - dev
 
 jobs:
   build:

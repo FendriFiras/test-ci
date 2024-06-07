@@ -19,3 +19,18 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Get new tag
+        id: get_version
+        run: echo "new_tag=$(jq -r .new_release.version <semantic-release-result.json)" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  tag_export:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Export new tag
+        run: echo ${{ needs.release.outputs.new_tag }}
